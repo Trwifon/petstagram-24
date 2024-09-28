@@ -1,3 +1,19 @@
 from django.shortcuts import render
 
-# Create your views here.
+def register(request):
+    pass
+
+def login(request):
+    pass
+
+def profile_details(request):
+    pass
+
+def edit_profile(request):
+    pass
+
+def delete_profile(request):
+    pass
+
+
+
