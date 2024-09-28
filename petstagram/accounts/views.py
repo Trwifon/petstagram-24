@@ -1,19 +1,26 @@
 from django.shortcuts import render
 
+
 def register(request):
-    pass
+    return render(request, template_name='accounts/register-page.html')
+
 
 def login(request):
-    pass
+    return render(request, template_name='accounts/login-page.html')
 
-def profile_details(request):
-    pass
 
-def edit_profile(request):
-    pass
+def profile_details(request, pk: int):
+    return render(request, template_name='accounts/profile-details-page.html')
 
-def delete_profile(request):
-    pass
+
+def edit_profile(request, pk: int):
+    return render(request, template_name='accounts/profile-edit-page.html')
+
+
+def delete_profile(request, pk: int):
+    return render(request, template_name='accounts/profile-delete-page.html')
+
+
 
 
 
