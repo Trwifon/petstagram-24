@@ -8,3 +8,4 @@ urlpatterns = [
     path('pets/', include('petstagram.pets.urls')),
     path('photos/', include('petstagram.photos.urls')),
 ]
+
