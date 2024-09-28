@@ -1,4 +1,6 @@
 from django.db import models
+from django.template.defaultfilters import slugify
+
 
 class Pet(models.Model):
     name = models.CharField(max_length=30)
@@ -11,12 +13,18 @@ class Pet(models.Model):
     )
 
     slug = models.SlugField(
-        null=False,
+        null=True,
         blank=True,
-        unique=True
+        unique=True,
+        editable=False,
     )
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
-# class PetsPhoto(models.Model):
-#     photo = models.ImageField()
+        if not self.slug:
+            self.slug = slugify(f"{self.name}-{self.id}")
+
+        super().save(*args, **kwargs)
+
 
