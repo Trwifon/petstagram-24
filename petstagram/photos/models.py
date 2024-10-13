@@ -7,7 +7,7 @@ from petstagram.photos.validators import FileSizeValidator
 
 class Photo(models.Model):
     photo = models.ImageField(
-        upload_to='mediafiles',
+        upload_to='images',
         validators=[FileSizeValidator(5)]
     )
 
@@ -24,10 +24,9 @@ class Photo(models.Model):
         blank=True
     )
 
-    tagget_pets = models.ManyToManyField(
+    tagged_pets = models.ManyToManyField(
         to=Pet,
         blank=True,
-        related_name='tagget_pets'
     )
 
     date_of_publication = models.DateField(

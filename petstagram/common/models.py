@@ -4,7 +4,7 @@ from petstagram.photos.models import Photo
 
 
 class Comment(models.Model):
-    photo = models.ForeignKey(
+    to_photo = models.ForeignKey(
         to=Photo,
         on_delete=models.CASCADE
     )
@@ -13,9 +13,12 @@ class Comment(models.Model):
 
     datetime = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-datetime']
+
 
 class Like(models.Model):
-    photo = models.ForeignKey(
+    to_photo = models.ForeignKey(
         to=Photo,
         on_delete=models.CASCADE
     )
