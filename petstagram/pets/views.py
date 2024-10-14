@@ -3,13 +3,14 @@ from lib2to3.fixes.fix_input import context
 from django.shortcuts import render, redirect
 
 from petstagram.accounts.views import profile_details
+from petstagram.common.forms import CommentForm
 from petstagram.common.models import Comment
 from petstagram.pets.forms import PetForm, PetDeleteForm
 from petstagram.pets.models import Pet
 
 
 def add_pet(request):
-    form = Petform(request.POST or None)
+    form = PetForm(request.POST or None)
 
     if form.is_valid():
         form.save()
@@ -21,14 +22,14 @@ def add_pet(request):
 
 def pet_details(request, username: str, pet_slug: str):
     pet = Pet.objects.get(slug=pet_slug)
-    print(pet.slug)
     all_photos = pet.photo_set.all()
 
-    # comment_form = CommentForm()
+    comment_form = CommentForm()
 
     context = {
         'pet': pet,
-        'all_photos': all_photos
+        'all_photos': all_photos,
+        'comment_form': comment_form
     }
 
     return render(request, 'pets/pet-details-page.html', context)

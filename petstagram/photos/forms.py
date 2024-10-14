@@ -1,5 +1,6 @@
 from django import forms
 
+from petstagram.common.models import Comment
 from petstagram.photos.models import Photo
 
 
@@ -13,4 +14,3 @@ class PhotoEditForm(forms.ModelForm):
     class Meta:
         model = Photo
         exclude = ['photo',]
-
